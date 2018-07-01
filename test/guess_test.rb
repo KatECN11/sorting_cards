@@ -16,18 +16,31 @@ class GuessTest < Minitest::Test
   def test_card
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
-    assert_equal Card, guess.card
+    assert_equal card, guess.card
   end
 
-  def test_correct?
+  def test_correct_for_true
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
     assert_equal true, guess.correct?
   end
 
-  # def test_response("10 of Hearts", card)
-  #   guess = Guess.new
-  #   assert_equal "10 of Hearts", guess.response
-  # end
+  def test_correct_for_false
+    card = Card.new("9", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
+    assert_equal false, guess.correct?
+  end
 
+
+  def test_response
+    card = Card.new("10", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
+    assert_equal "10 of Hearts", guess.response
+  end
+
+  def test_feedback_correct
+    card = Card.new("10", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
+    assert_equal "Correct!", guess.feedback
+  end
 end

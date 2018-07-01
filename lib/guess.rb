@@ -12,14 +12,18 @@ class Guess
   end
 
   def correct?
-    suit = @response.split[0]
-    value = @response.split.last
-    binding.pry
-
+    suit = @response.split.last
+    value = @response.split[0]
     return card.value == value && card.suit == suit
-    binding.pry
   end
 
+  def feedback
+    if correct? == true
+      "Correct!"
+    else
+      "Incorrect."
+    end
+  end
 
 
 end
