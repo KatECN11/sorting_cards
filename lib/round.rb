@@ -13,7 +13,8 @@ class Round
   def record_guess(guess_hash)
     response = "#{guess_hash.values[0]} of #{guess_hash.values[1]}"
     guess = Guess.new(response, current_card)
-    require "pry"; binding.pry
+    @guesses << guess
+    guess 
   end
 
 
