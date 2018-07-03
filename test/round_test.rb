@@ -65,7 +65,7 @@ class RoundTest < Minitest::Test
   end
 
   def test_does_it_give_correct_feedback
-    
+
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -76,15 +76,15 @@ class RoundTest < Minitest::Test
 
   end
 
-  # def test_how_many_are_correct
-  #   card_1 = Card.new("3","Hearts")
-  #   card_2 = Card.new("4", "Clubs")
-  #   deck = Deck.new([card_1, card_2])
-  #   round = Round.new(deck)
-  #   guess = round.record_guess("3 of Hearts")
-  #   guess_2 = round.record_guess("Jack of Diamonds")
-  #
-  #   assert_equal 1, round.number_correct
-  # end
+  def test_number_correct
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    round.record_guess({value: "3", suit: "Hearts"})
+    round.record_guess({value: "Jack", suit: "Diamonds"})
+
+    assert_equal 1, round.test_number_correct
+  end
 
 end
