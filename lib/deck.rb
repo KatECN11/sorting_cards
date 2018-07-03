@@ -41,9 +41,28 @@ class Deck
     card_suit_hash[card_suit]
   end
 
-  def get_card_value(index)
-    card_values_hash(deck[index].value)
+  def sort_deck_by_value(deck)
+    swapped = true
+    while swapped do
+      swapped = false
+      sorted_cards = (deck.cards.length - 1).times do |i|
+        card_first_value = card_values_hash(deck.cards[i].value)
+        card_second_value = card_values_hash(deck.cards[i + 1].value)
+          if card_first_value > card_second_value
+            deck.cards[i], deck.cards[i + 1] = deck.cards[i + 1], deck.cards[i]
+
+            swapped = true
+          end
+          require "pry"; binding.pry
+      end
+    end
   end
+
+
+
+
+  #   card_values_hash(deck[index].value)
+  # end
 
 # I would then need to assign the suits a value for the tie breaker, Clubs,
 # Diamonds, Hearts, and Spades with values 1-4.
