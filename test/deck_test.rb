@@ -52,7 +52,24 @@ class DeckTest < Minitest::Test
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
     assert_equal 4, deck.card_suit_value(deck.cards[3].suit)
-  end 
+  end
+
+  def test_does_it_sort_by_value
+    card_1 = Card.new("4","Hearts")
+    card_2 = Card.new("Jack", "Clubs")
+    card_3 = Card.new("5", "Diamonds")
+    card_4 = Card.new("Ace", "Spades")
+    card_5 = Card.new("Ace", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
+
+    expected = [card_1, card_3, card_2, card_4, card_5]
+    actual = deck.sort_deck_by_value(deck)
+
+    assert_equal expected, actual
+  end
+
+
+
 
   def test_does_it_sort_deck
     skip
@@ -62,7 +79,7 @@ class DeckTest < Minitest::Test
     card_4 = Card.new("Ace", "Spades")
     card_5 = Card.new("Ace", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
-require "pry"; binding.pry
+
     assert_equal [card_1, card_3, card_2, card_5, card_4], deck.sort
   end
 end
