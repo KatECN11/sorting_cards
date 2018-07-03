@@ -10,21 +10,12 @@ class Round
     @deck.cards[0]
   end
 
-  def record_guess(response)
-# can call in the method because it's calling in the return value of
-# the method
-    guess = Guess.new(response, current_card) #Guess.new takes 2 arguments
-    @guesses << guess
-    guess
-
+  def record_guess(guess_hash)
+    response = "#{guess_hash.values[0]} of #{guess_hash.values[1]}"
+    guess = Guess.new(response, current_card)
+    require "pry"; binding.pry
   end
 
-  def number_correct
-    correct = 0
-    @guesses.each do |guess|
-        correct +=1 if guess.correct?
-      end
-      correct
-    end
+
 
 end
