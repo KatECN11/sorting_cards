@@ -84,7 +84,7 @@ class RoundTest < Minitest::Test
     round.record_guess({value: "3", suit: "Hearts"})
     round.record_guess({value: "Jack", suit: "Diamonds"})
 
-    assert_equal 1, round.test_number_correct
+    assert_equal 1, round.number_correct
   end
 
 end
