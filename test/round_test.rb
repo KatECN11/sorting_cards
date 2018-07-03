@@ -65,12 +65,14 @@ class RoundTest < Minitest::Test
   end
 
   def test_does_it_give_correct_feedback
-    skip
+    
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
+    round.record_guess({value: "3", suit: "Hearts"})
 
+    assert_equal "Correct!", round.guesses.first.feedback
 
   end
 
