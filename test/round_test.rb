@@ -59,6 +59,7 @@ class RoundTest < Minitest::Test
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
+    round.record_guess({value: "3", suit: "Hearts"})
 
     assert_equal 1, round.guesses.count
   end
