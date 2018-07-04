@@ -47,29 +47,49 @@ class Deck
               swapped = true
             end
           end
+        end
       end
-    end
+
     deck
   end
 
-def merge_sort(deck)
-  deck
-  if deck.lengh == 1
-    deck
+def merge_sort(cards)
+  if cards.length == 1
+    cards
   else
-    midpoint_index = deck.length/2
-    left_array = deck[0..midpoint_index]
-    right_array = deck[midpoint_index..-1]
+    midpoint_index = (cards.length)/2
+    left_array = cards[0..(midpoint_index-1)]
+    right_array = cards[midpoint_index..-1]
     merge_sort(left_array)
     merge_sort(right_array)
+    merge_decks(left_array, right_array)
   end
-
-  # def merge_decks(left_array, right_array)
-  #   sorted = []
-
-
 end
 
+  def merge_decks(left_array, right_array)
+    sorted = []
+    require "pry"; binding.pry
+    until left_array.empty? || right_array.empty?
+    if card_values_hash(left_array[0].value) < card_values_hash(right_array[0].value)
+      lowest = left_array.shift
+      sorted << lowest
+    elsif card_values_hash(left_array[0].value) == card_values_hash(right_array[0].value)
+      if card_suit_value(left_array[0].suit) < card_suit_value(right_array[0].suit)
+        lowest = left_array.shift
+        sorted << lowest
+      else
+        lowest = right_array[0]
+        sorted << lowest
+      end
+    else
+      lowest = right_array.shift
+      sorted << lowest
+    end
+  end
+  return sorted + left_array + right_array
+end
+
+end
 # Merge sort psuedocode
 # In this example, will need to either first convert all values
 # and suits into integer values, or make the call to the value/suit

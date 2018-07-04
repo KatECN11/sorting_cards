@@ -72,6 +72,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_does_it_merge_sort
+
     card_1 = Card.new("4","Hearts")
     card_2 = Card.new("Jack", "Clubs")
     card_3 = Card.new("5", "Diamonds")
@@ -79,13 +80,15 @@ class DeckTest < Minitest::Test
     card_5 = Card.new("Ace", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
-    sorted_deck = deck.merge_sort(deck)
+    card_array = deck.cards
 
-    actual = sorted_deck.cards
+    sorted_deck = deck.merge_sort(card_array)
+
+    actual = sorted_deck
     expected = [card_1, card_3, card_2, card_5, card_4]
 
     assert_equal expected, actual
-  end 
+  end
 
 
 end
