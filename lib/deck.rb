@@ -28,7 +28,7 @@ class Deck
     card_suit_hash[card_suit]
   end
 
-  def sort_deck_by_value(deck)
+  def sort_deck(deck)
     deck
     swapped = true
     while swapped do
@@ -39,9 +39,18 @@ class Deck
           if card_first_value > card_second_value
             deck.cards[i], deck.cards[i + 1] = deck.cards[i + 1], deck.cards[i]
             swapped = true
+          elsif card_first_value == card_second_value
+            first_card_suit = card_suit_value(deck.cards[i].suit)
+            second_card_suit = card_suit_value(deck.cards[i + 1].suit)
+            if first_card_suit > second_card_suit
+              deck.cards[i], deck.cards[i + 1] = deck.cards[i + 1], deck.cards[i]
+              swapped = true
+            end
           end
       end
     end
     deck
   end
+
+
 end
