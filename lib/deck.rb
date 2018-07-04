@@ -54,3 +54,26 @@ class Deck
 
 
 end
+
+# Merge sort psuedocode
+# In this example, will need to either first convert all values
+# and suits into integer values, or make the call to the value/suit
+# hashes I already have stored (DRY?) to get those integers for
+# comparison.
+
+# Take array of cards and recursively split the array into n/2.
+# We have odd # of cards though... that's ok, if we make
+# midpoint = n/2, then make the new arrays (0..midpoint) and
+#the other as (midpoint..-1).
+#The simplest/base case will be array.length == 1, when this
+# is the case, the program will (start moving back down the stack)
+# take left_array and compare it
+# to right_array (first elements) and will put the smaller of
+# the two into the sorted array
+# if left_array[0] < right_array[0]
+#   left_array[0] << sorted_array
+#  else
+#     right_array[0] << sorted_array
+#  end
+# when array.length == 1, method will return the array as is
+# then it will go through the comparison computation
