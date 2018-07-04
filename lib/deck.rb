@@ -52,6 +52,21 @@ class Deck
     deck
   end
 
+def merge_sort(deck)
+  deck
+  if deck.lengh == 1
+    deck
+  else
+    midpoint_index = deck.length/2
+    left_array = deck[0..midpoint_index]
+    right_array = deck[midpoint_index..-1]
+    merge_sort(left_array)
+    merge_sort(right_array)
+  end
+
+  # def merge_decks(left_array, right_array)
+  #   sorted = []
+
 
 end
 
@@ -59,7 +74,9 @@ end
 # In this example, will need to either first convert all values
 # and suits into integer values, or make the call to the value/suit
 # hashes I already have stored (DRY?) to get those integers for
-# comparison.
+# comparison.  Probably just sort the array as the actual deck cards,
+# then use the same comparison calls to the conversion methods for actually
+# performing the comparison.
 
 # Take array of cards and recursively split the array into n/2.
 # We have odd # of cards though... that's ok, if we make
