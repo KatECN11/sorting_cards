@@ -28,7 +28,7 @@ class Deck
     card_suit_hash[card_suit]
   end
 
-  def sort_deck(deck)
+  def sort(deck)
     deck
     swapped = true
     while swapped do

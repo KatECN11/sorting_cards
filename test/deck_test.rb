@@ -63,7 +63,7 @@ class DeckTest < Minitest::Test
     card_5 = Card.new("Ace", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
-    sorted_deck = deck.sort_deck(deck)
+    sorted_deck = deck.sort(deck)
 
     actual = sorted_deck.cards
     expected = [card_1, card_3, card_2, card_5, card_4]
